@@ -15,6 +15,36 @@ const Student = db.define("student", {
   lastname: {
     type: Sequelize.STRING,
     allowNull: false
+  },
+
+  email: {
+    type: Sequelize.STRING,
+    allowNull: false,
+    validate: {
+      notEmpty: true,
+      isEmail: true,
+    },
+  },
+
+  imageurl: {
+    type: Sequelize.STRING,
+    // defaultValue: 'https://www.pngfind.com/pngs/m/163-1631127_student-school-study-skills-college-test-students-pictures.png', // Set your default image URL here
+    allowNull: true,
+  },
+
+  gpa: {
+    type: Sequelize.DECIMAL(3, 1), // Precision of 3 digits and 1 decimal place
+    allowNull: true,
+    validate: {
+      isDecimal: true,
+      min: 0.0,
+      max: 4.0,
+    },
+  },
+  
+  campusId: {
+    type: Sequelize.INTEGER,
+    allowNull: true,
   }
 });
 
