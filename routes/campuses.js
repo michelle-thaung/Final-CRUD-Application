@@ -65,5 +65,14 @@ router.put('/:id', ash(async(req, res) => {
   res.status(201).json(campus);  // Status code 201 Created - successful creation of a resource
 }))
 
+// ENROLL NEW STUDENT
+router.put(':studentId/enrollnew', ash(async (req, res) => {
+  // const { campusId } = req.params.campusId;
+  Student.create(req.body)
+    // .setCampus(campusId)
+    .then(createdStudent => res.status(200).json(createdStudent))
+    .catch(err => next(err));
+}));
+
 // Export router, so that it can be imported to construct the apiRouter (app.js)
 module.exports = router;
