@@ -20,6 +20,12 @@ const Campus = db.define("campus", {
 
   description: {
     type: Sequelize.STRING,
+  },
+
+  imageurl: {
+    type: Sequelize.STRING,
+    defaultValue: 'https://www.zillowstatic.com/bedrock/app/uploads/sites/26/shutterstock_262043447-dedc70.jpg', // Set your default image URL here
+    allowNull: true,
   }
 });
 
